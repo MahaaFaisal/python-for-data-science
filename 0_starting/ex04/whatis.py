@@ -5,6 +5,7 @@ def odd_or_even(number: int) -> None:
 		print("I'm Even.")
 	else:
 		print("I'm Odd.")
+
 try:
 	argv = sys.argv
 	assert len(argv) == 2, "AssertionError: more than one argument is provided"
