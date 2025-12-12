@@ -21,8 +21,8 @@ def string_to_morse(string: str):
 def main():
     try:
         args = sys.argv
-        if (len(args) != 2 or not all(x.isalnum() or
-                                      x == " " for x in args[1])):
+        if (len(args) != 2 or
+           not all(x.isalnum() or x == " " for x in args[1])):
             raise AssertionError("AssertionError: the arguments are bad")
         print(string_to_morse(args[1]))
 

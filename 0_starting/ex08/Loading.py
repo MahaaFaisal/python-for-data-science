@@ -1,5 +1,4 @@
 import os
-from time import sleep
 
 
 def ft_tqdm(lst: range) -> None:
@@ -10,10 +9,10 @@ def ft_tqdm(lst: range) -> None:
         progress = round(idx / len(lst) * (width - 39))
         bar = f"{'█' * progress:<{width - 39}}"
 
-        print("\r{}%|{}| {}/{}]".format(
+        print("\r{}%|{}| {}/{}".format(
             '%3s' % percentage, bar, idx, len(lst)),
             end="\r")
         yield i
 
-    print("\r{}%|{}| {}/{}]".format(
+    print("\r{}%|{}| {}/{}".format(
         100, bar, len(lst), len(lst)), end="\r")
