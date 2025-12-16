@@ -2,6 +2,11 @@ import os
 
 
 def ft_tqdm(lst: range) -> None:
+    """ wraps an iterable and automatically updates
+    a progress bar each time the iterable advances.
+
+    lst -- a range object that the loop is using
+    """
     width = os.get_terminal_size().columns
 
     for idx, i in enumerate(lst):
