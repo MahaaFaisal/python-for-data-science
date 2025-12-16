@@ -2,6 +2,12 @@ import sys
 
 
 def string_to_morse(string: str):
+    """ function that takes a string as an argument and returns
+    its morse code translation
+
+    str -- the alphabetical string to convert
+
+    """
     NESTED_MORSE = {"A": ".-",      "B": "-...",
                     "C": "-.-.",    "D": "-..",    "E": ".",
                     "F": "..-.",    "G": "--.",     "H": "....",

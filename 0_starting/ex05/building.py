@@ -17,6 +17,9 @@ def count_by_condition(string: str, condition) -> int:
 
 
 def get_input_string() -> str:
+    """Returns the input string after taking it from arguments or
+    standard input"""
+
     if len(sys.argv) == 1:
         print("What is the text to count?")
         return (sys.stdin.read())
