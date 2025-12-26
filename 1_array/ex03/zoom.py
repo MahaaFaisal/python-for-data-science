@@ -7,6 +7,8 @@ def ft_zoom(image_arr: np.ndarray, region: tuple[int, int, int, int]):
     # zoom
     cropped = image.convert("L").crop(region)
     cropped_arr = np.asarray(cropped)
+    cropped_arr = cropped_arr[..., np.newaxis]
+
     cropped.show()
     print(f"New shape after slicing: {cropped_arr.shape}")
 
