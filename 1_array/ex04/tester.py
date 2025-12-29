@@ -2,7 +2,6 @@ from load_image import ft_load
 from zoom import ft_zoom
 from rotate import ft_rotate
 from PIL import Image
-import numpy as np
 
 
 def main():

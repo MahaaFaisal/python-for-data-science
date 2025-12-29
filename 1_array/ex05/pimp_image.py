@@ -4,7 +4,7 @@ import numpy as np
 
 def ft_invert(image_arr: np.ndarray) -> np.ndarray:
     inverted_arr = 255 - image_arr
-    # Image.fromarray(inverted_arr).show()
+    Image.fromarray(inverted_arr).show()
     return inverted_arr
 
 
