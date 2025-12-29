@@ -9,7 +9,7 @@ def ft_zoom(image_arr: np.ndarray, region: tuple[int, int, int, int]):
     cropped_arr = np.asarray(cropped)
     cropped_arr = cropped_arr[..., np.newaxis]
 
-    cropped.show()
+    # cropped.show()
     print(f"The shape of image is: {cropped_arr.shape}")
 
     return cropped_arr
