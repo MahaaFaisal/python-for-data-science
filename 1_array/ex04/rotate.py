@@ -1,8 +1,7 @@
-# from PIL import Image
 import numpy as np
 
 
-def ft_rotate(image_arr: np.ndarray):
+def ft_rotate(image_arr: np.ndarray) -> np.ndarray:
     if (image_arr.ndim == 3):
         image_arr = image_arr[..., 0]
 
