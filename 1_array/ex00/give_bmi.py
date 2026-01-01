@@ -3,9 +3,13 @@
 def give_bmi(height: list[int | float],
              weight: list[int | float]) -> list[int | float]:
     """
-a function that takes a list of heights,\
-and returns the corresponding bmi for each
+Return a list of BMI values computed from heights and weights.
+
+BMI is calculated as weight / (height * height) for each index.
     """
+
+    if not isinstance(height, list) or not isinstance(weight, list):
+        raise ValueError("height and weight should be lists")
     if len(height) != len(weight):
         raise ValueError("Lists must be of the same length")
     if (not all(isinstance(x, (int, float)) for x in height)
@@ -16,7 +20,11 @@ and returns the corresponding bmi for each
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     """
-a function that takes a list of bmis and a limit and returns a list\
-    of booleans wether that bmi is greater than limit or no
+Return a list of booleans indicating whether each BMI exceeds the limit.
     """
+
+    if not isinstance(bmi, list):
+        raise ValueError("bmi should be a list")
+    if not all(isinstance(x, (int, float)) for x in bmi):
+        raise TypeError("List elements must be int or float")
     return list(map(lambda x: x > limit, bmi))
