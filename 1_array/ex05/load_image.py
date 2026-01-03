@@ -3,6 +3,9 @@ import numpy as np
 
 
 def ft_load(path: str) -> np.ndarray:
+    """
+Loads an image from the given path and returns it as a numpy array.
+    """
     try:
 
         image = Image.open(path)
