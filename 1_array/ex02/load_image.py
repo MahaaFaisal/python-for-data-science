@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import numpy as np
 
 
@@ -12,8 +12,8 @@ Loads an image from the given path and returns it as a numpy array.
             print(f"The shape of the image is: {image_array.shape}")
             return image_array
 
-    except OSError:
-        raise OSError("Failed to open file")
+    except UnidentifiedImageError:
+        raise UnidentifiedImageError("Failed to open file")
     except FileNotFoundError:
         raise FileNotFoundError("File not found")
     except Exception as e:

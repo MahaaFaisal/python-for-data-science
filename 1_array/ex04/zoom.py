@@ -13,6 +13,6 @@ Crops the image and converts it to grayscale.
         cropped_arr = np.asarray(cropped)
         cropped_arr = cropped_arr[..., np.newaxis]
         print(f"The shape of image is: {cropped_arr.shape}")
+        return cropped_arr
     except Exception as e:
-        raise Exception(f"failed to rotate image: {e}")
-    return cropped_arr
+        raise Exception(f"failed to zoom image: {e}")
