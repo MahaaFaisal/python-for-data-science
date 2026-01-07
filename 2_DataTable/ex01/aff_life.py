@@ -5,13 +5,17 @@ from matplotlib.ticker import MultipleLocator
 
 
 def aff_life(df: pd.Series) -> None:
-    # print(type(df))
-    obj = df.plot(title="United Arab Emirates Life expectancy Projections", 
-                  xlabel="Year", ylabel="Life Expectancy")
-    print(obj)
-    # obj.xaxis.set_major_locator(MultipleLocator(40))
-    # obj.set_xticklabels()
-    plt.show()
+    try:
+        df.index = df.index.astype(int)
+        df.plot()
+        plt.title("United Arab Emirates Life expectancy Projections")
+        plt.xlabel("Year")
+        plt.ylabel("Life Expectancy")
+        plt.xticks(range(df.index.min(), df.index.max() + 1, 40))
+
+        plt.show()
+    except KeyboardInterrupt:
+        plt.close()
 
 
 def main():
