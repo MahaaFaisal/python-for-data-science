@@ -23,16 +23,19 @@ def aff_pop(df: pd.DataFrame) -> None:
     try:
         df.index = df.index.astype(int)
         df[["Belgium", "France"]] = df[["Belgium", "France"]].map(numerize)
-        axes = df.plot(title="Population Projections",
-                       xlabel="Year", ylabel="Population")
-        axes.ticklabel_format(style="plain", axis='y')
+        df.loc[2050] = float('nan')
+
+        ax = df.plot(title="Population Projections",
+                     xlabel="Year", ylabel="Population",
+                     color=["blue", "green"])
+        ax.legend(loc="lower right")
 
         ymin = 20000000
         ymax = max(int(df["Belgium"].max()), int(df["France"].max()))
 
-        plt.xticks(range(df.index.min(), df.index.max() - 41, 40))
+        plt.xticks(range(df.index.min(), 2041, 40))
         plt.yticks(range(ymin, ymax, 20000000), ["20M", "40M", "60M"])
-
+        ax.set_xlim(df.index.min(), 2050)
         plt.show()
 
     except KeyboardInterrupt:
