@@ -23,7 +23,6 @@ def aff_pop(df: pd.DataFrame) -> None:
     try:
         df.index = df.index.astype(int)
         df[["Belgium", "France"]] = df[["Belgium", "France"]].map(numerize)
-        df.loc[2050] = float('nan')
 
         ax = df.plot(title="Population Projections",
                      xlabel="Year", ylabel="Population",
