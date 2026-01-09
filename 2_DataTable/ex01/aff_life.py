@@ -1,17 +1,17 @@
 from load_csv import load
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
 
 
-def aff_life(df: pd.Series) -> None:
+def aff_life(series: pd.Series) -> None:
     try:
-        df.index = df.index.astype(int)
-        df.plot()
+        series.index = series.index.astype(int)
+        series.plot()
+
         plt.title("United Arab Emirates Life expectancy Projections")
         plt.xlabel("Year")
         plt.ylabel("Life Expectancy")
-        plt.xticks(range(df.index.min(), df.index.max() + 1, 40))
+        plt.xticks(range(series.index.min(), series.index.max() + 1, 40))
 
         plt.show()
     except KeyboardInterrupt:
@@ -20,8 +20,10 @@ def aff_life(df: pd.Series) -> None:
 
 def main():
     try:
-        df = load("life_expectancy_years.csv").set_index('country')
-        aff_life(df.loc["United Arab Emirates"])
+        df = load("life_expectancy_years.csv")
+        if df is not None:
+            df = df.set_index('country')
+            aff_life(df.loc["France"])
 
     except Exception as e:
         print(f"{type(e).__name__}: {e}")
