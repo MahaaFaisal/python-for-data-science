@@ -29,10 +29,11 @@ def main():
         income_df = load(
             "income_per_person_gdppercapita_ppp_inflation_adjusted.csv"
             ).set_index("country")
-        life_df = life_df["1900"].rename("Life Expectancy")
-        income_df = income_df["1900"].rename("Gross Domestic Product")
-        df = pd.concat([income_df, life_df], axis=1)
-        projection_life(df)
+        if life_df is not None and income_df is not None:
+            life_df = life_df["1900"].rename("Life Expectancy")
+            income_df = income_df["1900"].rename("Gross Domestic Product")
+            df = pd.concat([income_df, life_df], axis=1)
+            projection_life(df)
 
     except Exception as e:
 
