@@ -44,9 +44,9 @@ def aff_pop(df: pd.DataFrame) -> None:
 def main():
     try:
         df = load("population_total.csv").set_index('country')
-        plot_df = df.loc[["Belgium", "France"]].T
-
-        aff_pop(plot_df)
+        if df is not None:
+            plot_df = df.loc[["Belgium", "France"]].T
+            aff_pop(plot_df)
 
     except Exception as e:
         print(f"{type(e).__name__}: {e}")
