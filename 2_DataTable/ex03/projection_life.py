@@ -11,7 +11,7 @@ def projection_life(df: pd.DataFrame) -> None:
                      y="Life Expectancy"
                     )
         ax.set_xscale("log")
-        plt.xticks([300, 1000, 10000], [300, "1k", "10k"])
+        plt.xticks([300, 1000, 10000])
         ax.get_xaxis().set_major_formatter(
             plt.FuncFormatter(
                 lambda x, _: f"{int(x/1000)}k" if x >= 1000 else int(x))
