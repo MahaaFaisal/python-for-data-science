@@ -1,5 +1,5 @@
 from load_csv import load
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -13,7 +13,8 @@ def projection_life(df: pd.DataFrame) -> None:
         ax.set_xscale("log")
         plt.xticks([300, 1000, 10000], [300, "1k", "10k"])
         ax.get_xaxis().set_major_formatter(
-            plt.FuncFormatter(lambda x, _: f"{int(x/1000)}k" if x >= 1000 else int(x))
+            plt.FuncFormatter(
+                lambda x, _: f"{int(x/1000)}k" if x >= 1000 else int(x))
         )
 
         plt.title("1900")
@@ -36,7 +37,6 @@ def main():
             projection_life(df)
 
     except Exception as e:
-
         print(f"{type(e).__name__}: {e}")
 
 
