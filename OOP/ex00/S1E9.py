@@ -9,15 +9,16 @@ class Character(ABC):
         self.is_alive = is_alive
 
     @abstractmethod
-    def die():
-        pass
+    def die(self):
+        """ changes the is_alive attribute to false"""
+        self.is_alive = False
 
 
 class Stark(Character):
     """A character from the Starks"""
     def die(self):
-        """ changes the is_alive attribute to false"""
-        self.is_alive = False
+        """ calls super.die() which changes the is_alive attribute to false"""
+        super().die()
 
 
 Ned = Stark("Ned")
