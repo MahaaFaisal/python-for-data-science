@@ -18,6 +18,10 @@ class Baratheon(Character):
     def die(self):
         super().die()
 
+    @classmethod
+    def create_baratheon(cls, first_name, is_alive=True):
+        return cls(first_name, is_alive)
+
 
 class Lannister(Character):
     """Representing the Lannister family."""
