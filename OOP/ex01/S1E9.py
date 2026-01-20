@@ -19,4 +19,3 @@ class Stark(Character):
     def die(self):
         """ calls super.die() which changes the is_alive attribute to false"""
         super().die()
-

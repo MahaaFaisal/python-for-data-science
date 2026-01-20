@@ -3,9 +3,9 @@ from S1E9 import Character
 
 class Baratheon(Character):
     """Representing the Baratheon family."""
-    def __init__(self, first_name):
+    def __init__(self, first_name, is_alive=True):
         """ the initialization function for Baratheon"""
-        super().__init__(first_name)
+        super().__init__(first_name, is_alive)
         self.family_name = "Baratheon"
         self.eyes = "brown"
         self.hairs = "dark"
