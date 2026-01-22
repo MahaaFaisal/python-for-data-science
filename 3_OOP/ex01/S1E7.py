@@ -3,6 +3,7 @@ from S1E9 import Character
 
 class Baratheon(Character):
     """Representing the Baratheon family."""
+
     def __init__(self, first_name, is_alive=True):
         """ the initialization function for Baratheon"""
         super().__init__(first_name, is_alive)
@@ -56,21 +57,3 @@ class Lannister(Character):
         """ a function that creates a new Lannister object \
             and returns the cls object for chaining"""
         return cls(first_name, is_alive)
-
-
-Robert = Baratheon("Robert")
-print(Robert.__dict__)
-print(Robert.__str__)
-print(Robert.__repr__)
-print(Robert.is_alive)
-Robert.die()
-print(Robert.is_alive)
-print(Robert.__doc__)
-print("---")
-Cersei = Lannister("Cersei")
-print(Cersei.__dict__)
-print(Cersei.__str__)
-print(Cersei.is_alive)
-print("---")
-Jaine = Lannister.create_lannister("Jaine", True)
-print(f"Name : {Jaine.first_name, type(Jaine).__name__}, Alive : {Jaine.is_alive}")
