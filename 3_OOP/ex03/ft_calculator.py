@@ -20,7 +20,7 @@ class calculator:
         try:
             self._list = [x / object for x in self._list]
             print(self._list)
-        except Exception as e:
+        except ZeroDivisionError as e:
             print(f"{type(e).__name__}: {e}")
 
 
