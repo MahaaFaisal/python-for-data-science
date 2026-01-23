@@ -4,15 +4,13 @@ import matplotlib.pyplot as plt
 
 
 def numerize(string: str) -> int:
-    numeric_dict = {
-        "k": 1000,
-        "K": 1000,
-        "m": 1000000,
-        "M": 1000000
-    }
+    numeric_dict = {"K": 1000, "M": 1000000}
+
     init_num = float(string[:-1])
-    if string[-1] in numeric_dict:
-        numeric = init_num * numeric_dict[string[-1]]
+    unit = string[-1].upper()
+
+    if unit in numeric_dict:
+        numeric = init_num * numeric_dict[unit]
     else:
         numeric = string
     return numeric
@@ -21,7 +19,7 @@ def numerize(string: str) -> int:
 def process_df(df: pd.DataFrame, country1: str, country2: str) -> pd.DataFrame:
     df = df.loc[[country1, country2]].T
     df.index = df.index.astype(int)
-    df[[country1, country2]] = df[[country1, country2]].map(numerize)
+    df = df.map(numerize)
 
     return df
 
@@ -34,7 +32,6 @@ def aff_pop(df: pd.DataFrame, country1: str, country2: str) -> None:
         ax.legend(loc="lower right")
 
         ymin = 20000000
-
         ymax = max(int(df[country1].max()), int(df[country2].max()))
 
         plt.xticks(range(df.index.min(), 2041, 40))
@@ -48,8 +45,9 @@ def aff_pop(df: pd.DataFrame, country1: str, country2: str) -> None:
 
 def main():
     try:
-        df = load("population_total.csv").set_index('country')
+        df = load("population_total.csv")
         if df is not None:
+            df = df.set_index('country')
             country1 = "United Arab Emirates"
             country2 = "France"
             plot_df = process_df(df, country1, country2)
