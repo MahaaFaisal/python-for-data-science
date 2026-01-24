@@ -5,9 +5,13 @@ class Character(ABC):
     """A class that represents a character"""
 
     def __init__(self, first_name, is_alive=True):
-        """ initializes the character with name and optional is_alive"""
-        self.first_name = first_name
-        self.is_alive = is_alive
+        self.first_name = first_name if isinstance(first_name, str) else None
+        if self.first_name is None:
+            print("ValueError: first_name should be a string. Now set to None")
+
+        self.is_alive = is_alive if isinstance(is_alive, bool) else True
+        if not isinstance(is_alive, bool):
+            print("ValueError: is_alive should be a bool. Now set to True")
 
     @abstractmethod
     def die(self):
@@ -17,6 +21,7 @@ class Character(ABC):
 
 class Stark(Character):
     """A character from the Starks"""
+
     def die(self):
         """ calls super.die() which changes the is_alive attribute to false"""
         super().die()

@@ -3,29 +3,36 @@ from S1E7 import Baratheon, Lannister
 
 class King(Baratheon, Lannister):
     """ A class that inherits from Baratheon and Lannister"""
+
     def __init__(self, first_name, is_alive=True):
-        """ the initialization function for Lannister"""
+        """ the initialization function for King"""
         super().__init__(first_name, is_alive)
 
     @property
-    def _eyes(self) -> str:
+    def eyes(self) -> str:
         """eyes property for King"""
         return self.__dict__["eyes"]
 
     @property
-    def _hairs(self) -> str:
+    def hairs(self) -> str:
         """hairs property for King"""
         return self.__dict__["hairs"]
 
-    @_eyes.setter
-    def _eyes(self, value: str) -> None:
+    @eyes.setter
+    def eyes(self, value: str) -> None:
         """eyes property setter for King"""
-        self.__dict__["eyes"] = value
+        if isinstance(value, str):
+            self.__dict__["eyes"] = value
+        else:
+            print("ValueError: eyes value should be a string")
 
-    @_hairs.setter
-    def _hairs(self, value: str) -> None:
+    @hairs.setter
+    def hairs(self, value: str) -> None:
         """hairs property setter for King"""
-        self.__dict__["hairs"] = value
+        if isinstance(value, str):
+            self.__dict__["hairs"] = value
+        else:
+            print("ValueError: hairs value should be a string")
 
     def set_eyes(self, value: str) -> None:
         """uses property setter to change eyes"""
@@ -42,3 +49,12 @@ class King(Baratheon, Lannister):
     def get_hairs(self) -> str:
         """uses property to return hairs"""
         return self.hairs
+
+
+Joffrey = King("Joffrey")
+print(Joffrey.__dict__)
+Joffrey.set_eyes("blue")
+Joffrey.set_hairs("light")
+print(Joffrey.get_eyes())
+print(Joffrey.get_hairs())
+print(Joffrey.__dict__)
