@@ -5,12 +5,14 @@ def ft_mean(args: int | float) -> float:
     return sum(args) / len(args)
 
 
-def ft_var(args: int | float, mean: float) -> float:
+def ft_var(args: int | float) -> float:
+    mean = ft_mean(args)
     args = tuple(((x - mean)**2 for x in args))
     return sum(args) / len(args)
 
 
-def ft_std(var: float) -> float:
+def ft_std(args: int | float) -> float:
+    var = ft_var(args)
     return sqrt(var)
 
 def ft_median(args: int | float) -> float:
@@ -23,9 +25,7 @@ def ft_median(args: int | float) -> float:
 def ft_interquartile(args: int | float) -> float:
     n = len(args)
     i1 = ((25 / 100) * (n))
-    print(i1, int(i1))
     i3 = ((75 / 100) * (n))
-    print(i3, int(i3))
 
     return args[int(i1)], args[int(i3)]
 
@@ -35,25 +35,26 @@ def assert_types(args: tuple[int | float], kwargs: dict[str]) -> None:
 
 
 def ft_statistics(*args: int | float, **kwargs: str) -> None:
+    functions = {
+        "mean": ft_mean,
+        "median": ft_median,
+        "quartile": ft_interquartile,
+        "std": ft_std,
+        "var": ft_var
+    }
+
     try:
         assert_types(args, kwargs)
         sorted_args = sorted(args)
-        print(sorted_args)
-
-        mean = ft_mean(sorted_args)
-        print(f"mean: {mean}")
-        median = ft_median(sorted_args)
-        print(f"median: {median}")
-        iqr1 = ft_interquartile(sorted_args)
-        print(f"interquartile1: {iqr1}")
-        std = ft_std(var)
-        print(f"std: {std}")
-        var = ft_var(sorted_args, mean)
-        print(f"var: {var}")
-
+        for value in kwargs.values():
+            try:
+                if value in functions.keys():
+                    print(f"{value} : {functions[value](sorted_args)}")
+            except Exception:
+                print("ERROR")
 
     except Exception as e:
-        print(f"ERROR")
+        print(f"ERROR, {e}")
 
 
 ft_statistics(1, 42, 360, 11, 64, toto="mean", tutu="median", tata="quartile")
