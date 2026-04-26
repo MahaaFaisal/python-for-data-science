@@ -27,7 +27,7 @@ def ft_interquartile(args: int | float) -> float:
     i1 = ((25 / 100) * (n))
     i3 = ((75 / 100) * (n))
 
-    return args[int(i1)], args[int(i3)]
+    return [float(args[int(i1)]), float(args[int(i3)])]
 
 def assert_types(args: tuple[int | float], kwargs: dict[str]) -> None:
     assert all(isinstance(x, (int, float)) for x in args)
