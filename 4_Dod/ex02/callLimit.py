@@ -1,10 +1,13 @@
 
 def callLimit(limit: int):
+    """Return a decorator that limits how many times a function can be called."""
     count = 0
 
     def callLimiter(function):
+        """Wrap a function with a shared call counter."""
 
         def limit_function(*args, **kwds):
+            """Call the wrapped function until the configured limit is reached."""
             nonlocal count
             if (count < limit):
                 count += 1
@@ -12,18 +15,3 @@ def callLimit(limit: int):
             print(f"Error: {function} call too many times")
         return limit_function
     return callLimiter
-
-
-@callLimit(3)
-def f():
-    print("f()")
-
-
-@callLimit(1)
-def g():
-    print("g()")
-
-
-for i in range(3):
-    f()
-    g()
