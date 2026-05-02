@@ -9,21 +9,15 @@ def pow(x: int | float) -> int | float:
 
 def outer(x: int | float, function) -> object:
     count = 0
+
     def inner() -> float:
-        nonlocal x
-        x =  function(x)
-        nonlocal count
+        nonlocal x, count
+        x = function(x)
         count += 1
         return x
     return inner
 
 
-my_counter = outer(3, square)
-print(my_counter())
-print(my_counter())
-print(my_counter())
-print("---")
-another_counter = outer(1.5, pow)
-print(another_counter())
-print(another_counter())
-print(another_counter())
+def show_cell_content(closure):
+    for i in range(len(closure)):
+        print(f"closure {i}: {closure[i].cell_contents}")

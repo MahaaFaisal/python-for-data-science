@@ -15,6 +15,7 @@ def ft_std(args: int | float) -> float:
     var = ft_var(args)
     return sqrt(var)
 
+
 def ft_median(args: int | float) -> float:
     n = len(args)
     mid_index = n // 2
@@ -22,12 +23,14 @@ def ft_median(args: int | float) -> float:
         return (args[mid_index] + args[mid_index + 1]) / 2
     return args[mid_index]
 
+
 def ft_interquartile(args: int | float) -> float:
     n = len(args)
     i1 = ((25 / 100) * (n))
     i3 = ((75 / 100) * (n))
 
     return [float(args[int(i1)]), float(args[int(i3)])]
+
 
 def assert_types(args: tuple[int | float], kwargs: dict[str]) -> None:
     assert all(isinstance(x, (int, float)) for x in args)
@@ -55,12 +58,3 @@ def ft_statistics(*args: int | float, **kwargs: str) -> None:
 
     except Exception as e:
         print(f"ERROR, {e}")
-
-
-ft_statistics(1, 42, 360, 11, 64, toto="mean", tutu="median", tata="quartile")
-print("-----")
-ft_statistics(5, 75, 450, 18, 597, 27474, 48575, hello="std", world="var")
-print("-----")
-ft_statistics(5, 75, 450, 18, 597, 27474, 48575, ejfhhe="heheh", ejdjdejn="kdekem")
-print("-----")
-ft_statistics(toto="mean", tutu="median", tata="quartile")
